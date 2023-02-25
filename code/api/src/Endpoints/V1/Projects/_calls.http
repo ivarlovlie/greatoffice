@@ -1,0 +1,12 @@
+### Create Project
+GET https://localhost:5001/v1/projects/create
+Accept: application/json
+Content-Type: application/json
+Cookie: "" 
+
+{
+  "": ""
+}
+
+### Get Projects
+POST http://localhost

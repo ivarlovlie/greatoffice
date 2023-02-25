@@ -1,0 +1,98 @@
+# Meta Data for SEO
+
+## Homepage
+title = "Greatoffice"
+titleSeparator = "-"
+titleAddition = "Great"
+description = "Greatoffice is a set of tools you can use to manage your business."
+
+## Documentation
+# docsVersion = "0.3"
+
+## Open Graph
+#images = [""]
+ogLocale = "en_US"
+domainTLD = "greatoffice.life"
+titleHome = "Greatoffice"
+
+## Twitter Cards
+#twitterSite = "@greatoffice"
+#twitterCreator = "@greatoffice"
+
+## JSON-LD
+# schemaType = "Person"
+schemaType = "Organization"
+schemaName = "Greatoffice"
+schemaAuthor = "Greatoffice"
+#schemaAuthorTwitter = "https://twitter.com/greatoffice"
+#schemaAuthorLinkedIn = "https://www.linkedin.com/in/ivar-lovlie/"
+#schemaAuthorGitHub = "https://github.com/h-enk"
+schemaLocale = "en-GB"
+#schemaLogo = ""
+#schemaLogoWidth = 512
+#schemaLogoHeight = 512
+#schemaImage = ""
+#schemaImageWidth = 1280
+#schemaImageHeight = 640
+#schemaTwitter = "https://twitter.com/"
+#schemaLinkedIn = ""
+#schemaGitHub = "https://github.com/h-enk/doks"
+#schemaSection = "blog"
+
+## Sitelinks Search Box
+siteLinksSearchBox = true
+
+## Chrome Browser
+themeColor = "#fff"
+
+# Images
+quality = 85
+bgColor = "#fff"
+landscapePhotoWidths = [900, 800, 700, 600, 500]
+portraitPhotoWidths = [800, 700, 600, 500]
+lqipWidth = "20x"
+smallLimit = "300"
+
+# Images
+imageResponsive = true
+imageConvertTo = "webp"
+imageImageSizes = ["480", "720", "1080", "1280", "1600", "2048"]
+singleSize = false
+imageAddClass = "img-fluid lazyload"
+
+### Image template
+#defaultImage = "default-image.png" # put in `./assets/images/`
+#fillImage = "1270x740 Center" # normalize image size
+
+# Footer
+footer = "This site is created with <a class=\"text-muted\" href=\"https://gohugo.io/\">Hugo</a> and <a class=\"text-muted\" href=\"https://getdoks.org/\">Doks</a>"
+
+# Feed
+copyRight = "Copyright (c) I2R"
+
+[sections]
+sectionNav = ["docs"]
+
+[options]
+lazySizes = true
+clipBoard = true
+instantPage = true
+flexSearch = false
+searchSectionsShow = []
+searchSectionsIndex = []
+darkMode = true
+bootStrapJs = true
+breadCrumb = true
+highLight = false
+kaTex = false
+multilingualMode = false
+docsVersioning = false
+fullWidth = true
+navbarSticky = true
+toTopButton = true
+scrollSpy = false # experimental; needs Bootstrap >= 5.2.0-beta1
+
+[menu]
+[menu.section]
+auto = true
+collapsibleSidebar = true

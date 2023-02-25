@@ -1,0 +1,23 @@
+image: ubuntu/lts
+packages:
+  - docker.io
+secrets:
+  - ea28f7fe-b300-4b79-addf-d487ed6eb1ef
+  - b6c0403d-10a9-4238-89cc-5402dc0c9fe5
+sources:
+  - git@git.ivar.systems:greatoffice
+tasks:
+  - setup: |
+      echo "export IMAGE_NAME=greatoffice/server
+      export HUB_NAME=dr.ivar.systems/greatoffice/server
+      export CURRENT_VERSION=$(cat ~/greatoffice/server/.version)
+      export CURRENT_VERSION_INT=${CURRENT_VERSION//[!0-9]/}
+      export NEW_VERSION=v$(CURRENT_VERSION_INT+1)-server" >> .buildenv
+  - build: |
+      sudo docker build -t $IMAGE_NAME:$NEW_VERSION ~/greatoffice/server
+  - publish: |
+      cat ~/.dockerpassword | sudo docker login dr.ivar.systems -u builder --password-stdin
+      sudo docker tag $IMAGE_NAME:$NEW_VERSION $HUB_NAME:$NEW_VERSION
+      sudo docker tag $IMAGE_NAME:$NEW_VERSION $HUB_NAME:latest
+      sudo docker push -a
+      complete-build()

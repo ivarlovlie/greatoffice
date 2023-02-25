@@ -1,0 +1,10 @@
+*/**/bin*
+*/**/obj*
+server-secrets.*
+.git
+*/**/node_modules/*
+src/web-app
+src/web-shared
+src/tests
+build_and_push.sh
+cloc.sh

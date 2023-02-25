@@ -1,0 +1,9 @@
+### Login
+POST http://localhost:5000/_/account/login
+Content-Type: application/json
+
+{
+  "username": "i@oiee.no",
+  "password": "ivar123",
+  "persist": false
+}

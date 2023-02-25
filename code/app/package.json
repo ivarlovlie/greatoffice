@@ -1,0 +1,50 @@
+{
+  "name": "greatoffice-kit",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm-run-all --parallel vite typesafe-i18n",
+    "typesafe-i18n": "typesafe-i18n",
+    "vite": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "@playwright/test": "^1.30.0",
+    "@sveltejs/adapter-node": "1.1.7",
+    "@sveltejs/kit": "1.5.0",
+    "@tailwindcss/forms": "^0.5.3",
+    "@types/js-cookie": "^3.0.2",
+    "@vite-pwa/sveltekit": "^0.1.3",
+    "autoprefixer": "^10.4.13",
+    "npm-run-all": "^4.1.5",
+    "pino-pretty": "^9.1.1",
+    "postcss": "^8.4.21",
+    "postcss-load-config": "^4.0.1",
+    "svelte": "^3.55.1",
+    "svelte-check": "^3.0.3",
+    "svelte-preprocess": "^5.0.1",
+    "tailwindcss": "^3.2.6",
+    "tslib": "^2.5.0",
+    "typesafe-i18n": "^5.24.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1",
+    "vite-plugin-pwa": "^0.14.3"
+  },
+  "dependencies": {
+    "@developermuch/dev-svelte-headlessui": "0.0.1",
+    "@rgossiaux/svelte-headlessui": "^1.0.2",
+    "fuzzysort": "^2.0.4",
+    "js-cookie": "^3.0.1",
+    "pino": "^8.9.0",
+    "pino-seq": "^0.9.0",
+    "svelte-headless-table": "^0.17.2",
+    "temporal-polyfill": "^0.0.8",
+    "turbo-query": "^1.9.0"
+  }
+}

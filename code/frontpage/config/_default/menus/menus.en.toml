@@ -1,0 +1,24 @@
+[[main]]
+  name = "Docs"
+  url = "/docs/"
+  weight = 10
+
+[[main]]
+  name = "Contact"
+  url = "/contact/"
+  weight = 20
+
+[[main]]
+  name = "Open app"
+  url = "https://stage.greatoffice.app"
+  weight = 30
+
+[[footer]]
+  name = "Privacy"
+  url = "/privacy/"
+  weight = 10
+
+[[footer]]
+  name = "Terms of service"
+  url = "/terms/"
+  weight = 10

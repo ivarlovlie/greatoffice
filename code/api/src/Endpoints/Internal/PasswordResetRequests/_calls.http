@@ -1,0 +1,22 @@
+### Create request
+POST http://localhost:5000/_/password-reset-request/create
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": ""
+}
+
+### Fulfill request
+POST http://localhost:5000/_/password-reset-request/fulfill
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id": "",
+  "newPassword": ""
+}
+
+### Is request valid
+GET http://localhost:5000/_/password-reset-request/is-valid?id=
+Accept: application/json

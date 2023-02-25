@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="Name is a required field" xml:space="preserve">
+        <value>Navn er et påkrevd felt</value>
+        <comment>Name is a required field</comment>
+    </data>
+    <data name="Start is a required field" xml:space="preserve">
+        <value>Start er et påkrevd felt</value>
+        <comment>Start is a required field</comment>
+    </data>
+    <data name="Invalid form" xml:space="preserve">
+        <value>Ugyldig skjema</value>
+        <comment>Invalid form</comment>
+    </data>
+    <data name="One or more fields is invalid" xml:space="preserve">
+        <comment>One or more fields is invalid</comment>
+        <value>En eller flere felt er ugyldige</value>
+    </data>
+    <data name="Invalid username or password" xml:space="preserve">
+        <value>Ugyldig brukernavn eller passord</value>
+        <comment>Invalid username or password</comment>
+    </data>
+    <data name="One or more validation errors occured" xml:space="preserve">
+        <value>En eller flere valideringsfeil har oppstått</value>
+    </data>
+    <data name="Hello, {0}.&#xA;&#xA;Validate your email address by opening this link in a browser {1}"
+          xml:space="preserve">
+        <value>Hei, {0}.
+
+Bekreft din e-postadresse ved å åpne denne lenken i en nettleser {1}</value>
+        <comment>Hello, {0}.
+
+            Validate your email address by opening this link in a browser {1}</comment>
+    </data>
+    <data name="Greatoffice Email Validation" xml:space="preserve">
+        <value>Greatoffice e-postaddresse bekreftelse</value>
+        <comment>Greatoffice Email Validation</comment>
+    </data>
+    <data name="Hi {0},&#xA;&#xA;Go to the following link to set a new password.&#xA;&#xA;{1}/reset-password/{2}&#xA;&#xA;The link expires at {3}.&#xA;If you did not request a password reset, no action is required."
+          xml:space="preserve">
+        <value>Hei {0},
+
+Åpne denne lenken i en nettleser for å sette nytt passord.
+
+{1}/reset-password/{2}
+
+Lenken utgår {3}.
+Hvis du ikke vet hva dette gjelder, kan du se bort i fra mailen.</value>
+        <comment>Hi {0},
+
+            Go to the following link to set a new password.
+
+            {1}/reset-password/{2}
+
+            The link expires at {3}.
+            If you did not request a password reset, no action is required.</comment>
+    </data>
+    <data name="Reset password - Greatoffice" xml:space="preserve">
+        <value>Sett nytt passord - Greatoffice</value>
+        <comment>Reset password - Greatoffice</comment>
+    </data>
+    <data name="The password requires 6 or more characters." xml:space="preserve">
+        <value>Passordet må være 6 eller flere tegn.</value>
+        <comment>The password requires 6 or more characters.</comment>
+    </data>
+    <data name="There is already a user registered with username: {username}" xml:space="preserve">
+        <value>Det finnes allerede en bruker med brukernavnet: {username}</value>
+        <comment>There is already a user registered with username: {username}</comment>
+    </data>
+    <data name="{username} does not look like a valid email" xml:space="preserve">
+        <value>{username} ser ikke ut som en gyldig e-postadresse</value>
+        <comment>{username} does not look like a valid email</comment>
+    </data>
+    <data name="Could not create your account, try again soon." xml:space="preserve">
+        <value>Kunne ikke lage din konto, prøv igjen snart.</value>
+        <comment>Could not create your account, try again soon.</comment>
+    </data>
+</root>

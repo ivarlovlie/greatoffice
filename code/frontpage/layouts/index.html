@@ -1,0 +1,68 @@
+{{ define "main" }}
+<section class="section container-fluid mt-n3 pb-3">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="mt-0">{{ .Title }}</h1>
+        </div>
+        <div class="col-lg-9 col-xl-8">
+            <p class="lead">{{ .Params.lead | safeHTML }}</p>
+            <p class="meta">GPLv3 Licensed.
+                <a href="https://git.ivar.systems/greatoffice/tree/COPYING">
+                    License
+                </a>
+                -
+                <a href="https://git.ivar.systems/greatoffice/about">
+                    Source
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+{{ end }}
+
+{{ define "sidebar-prefooter" }}
+{{ if eq $.Site.Language.LanguageName "English" }}
+<section class="section section-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <h2 class="h4">Projects</h2>
+                <p>Manage your projects with time tracking, planning and ecomnomics all built-in.</p>
+            </div>
+            <div class="col-lg-5">
+                <h2 class="h4">Task management</h2>
+                <p>Manage your tasks across projects and personal objectives.</p>
+            </div>
+            <div class="col-lg-5">
+                <h2 class="h4">Support tickets</h2>
+                <p>Follow-up your customers with built-in support for email, chat and phone support channels.</p>
+            </div>
+            <div class="col-lg-5">
+                <h2 class="h4">Wiki</h2>
+                <p>Manage your companys' global, project and personal documentation needs with a lightweight and
+                    complete wiki.</p>
+            </div>
+            <div class="col-lg-5">
+                <h2 class="h4">Transparency</h2>
+                <p>Practise transparency with your customers by giving them a dashboard to get relevant information</p>
+            </div>
+            <div class="col-lg-5">
+                <h2 class="h4">Integrate</h2>
+                <p>We expose our own production apis for public use, giving you unrestricted integration possibilities
+                    and reliability.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+{{ end }}
+
+{{ define "sidebar-footer" }}
+<section class="section section-sm container-fluid">
+    <div class="row">
+        <div class="col-lg-9">
+            {{- .Content -}}
+        </div>
+    </div>
+</section>
+{{ end }}
