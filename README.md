@@ -1,6 +1,6 @@
 # Greatoffice
 
-> This codebase and all of its source code is licensed under the GNU General Public License v3.0, see [COPYING](COPYING) for more information.
+> This codebase and all of its source code is licensed under the GNU General Public License v3.0, see [COPYING](COPYING).
 
 This repository contains all the code for greatoffice, a business management system.
 
@@ -17,7 +17,7 @@ Everything is WIP, but the platform is regularly updated at [https://stage.great
 
 ## code/api
 
-Contains a ASP.NET Core Web API, each route is specified in the Endpoints directory with a single file per route.
+Contains an ASP.NET Core Web API, each route is specified in the Endpoints directory with a single file per route.
 
 It handles all data operations (except administrative operations) for the platform.
 
@@ -56,7 +56,8 @@ The following configuration keys need valid values in order to start the api (re
 > See [`code/api/src/Data/Models/AppConfiguration.cs`](./code/api/src/Data/Models/AppConfiguration.cs) for expected values. 
 
 #### Flight mode
-If you need to skip the setup of vault or is unable to reach your vault instance, set isInFlightMode to true in [`code/api/src/Services/VaultService.cs`](./code/api/src/Services/VaultService.cs).
+
+If you need to skip the setup of vault or is unable to reach your vault instance, set FLIGHT_MODE to a positive value.
 
 ### Building and Developing
 
@@ -73,7 +74,7 @@ A helper script is available at [`code/api/build_and_push.sh`](code/api/build_an
 
 ## code/app
 
-Contains a svelte kit application that acts as the frontend for greatoffice.
+Contains a SvelteKit application that acts as the frontend for greatoffice.
 
 Noteworthy information:
 
@@ -93,4 +94,5 @@ To run the app in development mode use `pnpm run dev`.
 
 To build a production build use `pnpm run build`, the production build is placed in the `build` folder.
 
-> Use `node build/index.js` (minimum v16) to run the app
+> Use `node build/index.js` to run the app.
+> Node version should be current LTS
