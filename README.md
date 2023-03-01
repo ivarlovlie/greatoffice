@@ -38,11 +38,11 @@ I recommend using a seperate database for the quartz schema and app schema, sinc
 
 The api uses Hashicorp's vault to manage it's configuration, environment variables is used to point the api in the direction of the vault json object that contains the configuration.
 
-The configuration is described by [`code/api/src/Data/Models/AppConfiguration.cs`](./code/api/src/Data/Models/AppConfiguration.cs).
+The configuration is described by [`code/api/src/Models/Misc/AppConfiguration.cs`](./code/api/src/Models/Misc/AppConfiguration.cs).
 
 I recommend using [user-secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets) to set environment variables when developing.
 
-All environment variables the api needs to function properly is specified in [`code/api/src/Data/Static/AppEnvironmentVariables.cs`](./code/api/src/Data/Static/AppEnvironmentVariables.cs).
+All environment variables the api needs to function properly is specified in [`code/api/src/Models/Static/AppEnvironmentVariables.cs`](./code/api/src/Models/Static/AppEnvironmentVariables.cs).
 
 #### Minimum required configuration
 
@@ -53,7 +53,7 @@ The following configuration keys need valid values in order to start the api (re
 * Starting with QUARTZ_DB_
 * Equal to APP_CERT
 
-> See [`code/api/src/Data/Models/AppConfiguration.cs`](./code/api/src/Data/Models/AppConfiguration.cs) for expected values. 
+> See [`code/api/src/Models/Misc/AppConfiguration.cs`](./code/api/src/Models/Misc/AppConfiguration.cs) for expected values. 
 
 #### Flight mode
 
