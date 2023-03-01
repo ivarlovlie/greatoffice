@@ -69,7 +69,7 @@ The following configuration keys need valid values in order to start the api (re
 #### Flight mode
 
 When debugging the application you sometimes don't want to, or are not able to reach the vault for configuration values.
-In this case you can set the environment variable `FLIGHT_MODE` to something positive.
+In this case you can set the environment variable `FLIGHT_MODE` to a boolean value of `true`. 
 
 This will configure the api to read configuration from a json file specified at `FLIGHT_MODE_JSON`, defaults
 to `flightmode.json`.
