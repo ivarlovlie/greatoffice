@@ -1,6 +1,6 @@
 namespace IOL.GreatOffice.Api.Endpoints.Internal.Root;
 
-public class RefreshConfigurationRoute : RouteBaseSync.WithoutRequest.WithoutResult
+public class RefreshConfigurationRoute : RouteBaseAsync.WithoutRequest.WithoutResult
 {
     private readonly VaultService _vaultService;
 
@@ -9,7 +9,7 @@ public class RefreshConfigurationRoute : RouteBaseSync.WithoutRequest.WithoutRes
     }
 
     [HttpGet("~/_/refresh-configuration")]
-    public override void Handle() {
-        _vaultService.RefreshCurrentAppConfigurationAsync();
+    public override async Task HandleAsync(CancellationToken cancellationToken = default) {
+        await _vaultService.RefreshCurrentAppConfigurationAsync();
     }
 }

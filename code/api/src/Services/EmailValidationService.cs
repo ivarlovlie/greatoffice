@@ -62,6 +62,6 @@ Validate your email address by opening this link in a browser {1}
         queueItem.EmailSentAt = AppDateTime.UtcNow;
         _database.ValidationEmails.Add(queueItem);
         await _database.SaveChangesAsync();
-        Task.Run(async () => await _mailService.SendMailAsync(email));
+        await Task.Run(async () => await _mailService.SendMailAsync(email));
     }
 }

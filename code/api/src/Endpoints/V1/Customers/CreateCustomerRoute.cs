@@ -3,12 +3,10 @@ namespace IOL.GreatOffice.Api.Endpoints.V1.Customers;
 public class CreateCustomerRoute : RouteBaseAsync.WithRequest<CreateCustomerPayload>.WithActionResult
 {
     private readonly MainAppDatabase _database;
-    private readonly ILogger<CreateCustomerRoute> _logger;
     private readonly IStringLocalizer<SharedResources> _localizer;
 
-    public CreateCustomerRoute(MainAppDatabase database, ILogger<CreateCustomerRoute> logger, IStringLocalizer<SharedResources> localizer) {
+    public CreateCustomerRoute(MainAppDatabase database, IStringLocalizer<SharedResources> localizer) {
         _database = database;
-        _logger = logger;
         _localizer = localizer;
     }
 

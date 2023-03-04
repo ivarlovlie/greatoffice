@@ -1,5 +1,3 @@
-using ILogger = Microsoft.Extensions.Logging.ILogger;
-
 namespace IOL.GreatOffice.Api.Endpoints.Internal.Account;
 
 public class CreateAccountRoute : RouteBaseAsync.WithRequest<CreateAccountRoute.Payload>.WithActionResult

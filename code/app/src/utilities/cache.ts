@@ -1,11 +1,10 @@
-import { Temporal } from "temporal-polyfill";
-import { log_debug } from "$utilities/logger";
+import {Temporal} from "temporal-polyfill";
 
 let cache = {};
 
 export const CacheKeys = {
-    isAuthenticated: "isAuthenticated"
-}
+    isAuthenticated: "isAuthenticated",
+};
 
 export async function cached_result_async<T>(key: string, staleAfterSeconds: number, get_result: any, forceRefresh: boolean = false) {
     if (!cache[key]) {
@@ -21,7 +20,7 @@ export async function cached_result_async<T>(key: string, staleAfterSeconds: num
         cache[key].l = Temporal.Now.instant().epochSeconds;
     }
 
-    log_debug("Ran cached_result_async", {
+    console.debug("Ran cached_result_async", {
         cacheKey: key,
         isStale,
         cache: cache[key],
@@ -34,5 +33,5 @@ export async function cached_result_async<T>(key: string, staleAfterSeconds: num
 export function clear_cache_key(key: string) {
     if (!key) throw new Error("No key was specified");
     cache[key].c = undefined;
-    log_debug("Cleared cache with key: " + key);
+    console.debug("Cleared cache with key: " + key);
 }

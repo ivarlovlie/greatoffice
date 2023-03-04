@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { signInPageTestKeys } from "./index.js";
-import { get_test_context } from "$configuration";
+import { get_test_context } from "$configuration/test";
 import { get_pw_key_selector } from "$utilities/testing-helpers";
 
 const context = get_test_context();

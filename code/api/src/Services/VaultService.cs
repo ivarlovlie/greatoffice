@@ -7,7 +7,6 @@ public class VaultService
     private readonly HttpClient _client;
     private readonly IMemoryCache _cache;
     private readonly IConfiguration _configuration;
-    private readonly ILogger<VaultService> _logger;
     private int CACHE_TTL { get; set; }
 
     public VaultService(HttpClient client, IConfiguration configuration, IMemoryCache cache, ILogger<VaultService> logger) {
@@ -21,7 +20,6 @@ public class VaultService
         _client = client;
         _cache = cache;
         _configuration = configuration;
-        _logger = logger;
     }
 
     public async Task<T> GetSecretJsonAsync<T>(string path) {

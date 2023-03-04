@@ -1,11 +1,10 @@
-import { api_base, CookieNames } from "$configuration";
-import { cached_result_async, CacheKeys } from "$utilities/cache";
-import { log_debug, log_error } from "$utilities/logger";
-import { get_md5_hash } from "$utilities/crypto-helpers";
-import { error, redirect } from "@sveltejs/kit";
-import type { LayoutServerLoad } from "./$types";
+import {api_base, CookieNames} from "$configuration";
+import {cached_result_async, CacheKeys} from "$utilities/cache";
+import {get_md5_hash} from "$utilities/crypto-helpers";
+import {error, redirect} from "@sveltejs/kit";
+import type {LayoutServerLoad} from "./$types";
 
-export const load: LayoutServerLoad = async ({ route, cookies, locals, fetch }) => {
+export const load: LayoutServerLoad = async ({route, cookies, locals, fetch}) => {
     const isBaseRoute = route.id === "/(main)";
     const isPortalRoute = route.id === "/(main)/(public)/portal";
     const isPublicRoute = (isBaseRoute || (route.id?.startsWith("/(main)/(public)") ?? false)) ?? true;
@@ -18,14 +17,14 @@ export const load: LayoutServerLoad = async ({ route, cookies, locals, fetch }) 
                 Cookie: CookieNames.session + "=" + sessionCookieValue,
             },
         }).catch((e) => {
-            log_error(e);
+            console.error(e);
             throw error(503, {
                 message: "We are experiencing a service disruption! Have patience while we resolve the issue.",
             });
         }))).ok;
     }
 
-    log_debug("Base Layout loaded", {
+    console.debug("Base Layout loaded", {
         sessionIsValid,
         isPublicRoute,
         isBaseRoute,
