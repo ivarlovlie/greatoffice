@@ -1,3 +1,5 @@
+using IOL.GreatOffice.Api.Models.Database;
+
 namespace IOL.GreatOffice.Api.Services;
 
 public class TenantService

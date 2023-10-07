@@ -1,4 +1,5 @@
 using System.Text;
+using IOL.GreatOffice.Api.Models.Database;
 
 namespace IOL.GreatOffice.Api.Endpoints.V1.ApiTokens;
 

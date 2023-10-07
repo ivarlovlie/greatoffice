@@ -34,6 +34,7 @@ global using Quartz;
 global using IOL.GreatOffice.Api.Resources;
 using IOL.GreatOffice.Api.Endpoints.V1;
 using IOL.GreatOffice.Api.Jobs;
+using IOL.GreatOffice.Api.Models.Database;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Versioning;

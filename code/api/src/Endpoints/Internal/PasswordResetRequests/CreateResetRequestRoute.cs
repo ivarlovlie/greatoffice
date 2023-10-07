@@ -1,3 +1,5 @@
+using IOL.GreatOffice.Api.Models.Database;
+
 namespace IOL.GreatOffice.Api.Endpoints.Internal.PasswordResetRequests;
 
 public class CreateResetRequestRoute : RouteBaseAsync.WithRequest<CreateResetRequestRoute.Payload>.WithActionResult

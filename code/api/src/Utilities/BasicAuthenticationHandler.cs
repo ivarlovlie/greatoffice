@@ -1,6 +1,7 @@
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Encodings.Web;
+using IOL.GreatOffice.Api.Models.Database;
 using Microsoft.Extensions.Options;
 
 namespace IOL.GreatOffice.Api.Utilities;
