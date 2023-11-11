@@ -5,22 +5,26 @@ public class CreateCustomerRoute : RouteBaseAsync.WithRequest<CreateCustomerPayl
     private readonly MainAppDatabase _database;
     private readonly IStringLocalizer<SharedResources> _localizer;
 
-    public CreateCustomerRoute(MainAppDatabase database, IStringLocalizer<SharedResources> localizer) {
+    public CreateCustomerRoute(MainAppDatabase database, IStringLocalizer<SharedResources> localizer)
+    {
         _database = database;
         _localizer = localizer;
     }
 
     [HttpPost("~/v{version:apiVersion}/customers/create")]
-    public override async Task<ActionResult> HandleAsync(CreateCustomerPayload request, CancellationToken cancellationToken = default) {
+    public override async Task<ActionResult> HandleAsync(CreateCustomerPayload request, CancellationToken cancellationToken = default)
+    {
         var problem = new KnownProblemModel();
         if (request.Name.Trim().IsNullOrEmpty()) problem.AddError("name", _localizer["Name is a required field"]);
-        if (problem.Errors.Any()) {
+        if (problem.Errors.Any())
+        {
             problem.Title = _localizer["Invalid form"];
             problem.Subtitle = _localizer["One or more validation errors occured"];
             return KnownProblem(problem);
         }
 
-        var customer = new Customer(LoggedInUser) {
+        var customer = new Customer(LoggedInUser)
+        {
             CustomerNumber = request.CustomerNumber,
             Name = request.Name,
             Description = request.Description,
@@ -37,6 +41,7 @@ public class CreateCustomerRoute : RouteBaseAsync.WithRequest<CreateCustomerPayl
             DefaultReference = request.DefaultReference,
             Website = request.Website
         };
+
         customer.SetOwnerIds(default, LoggedInUser.TenantId);
         _database.Customers.Add(customer);
         await _database.SaveChangesAsync(cancellationToken);

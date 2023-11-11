@@ -44,7 +44,7 @@ namespace IOL.GreatOffice.Api;
 public static class Program
 {
     private static readonly string[] supportedCultures = ["en", "nb"];
-    public static AppConfiguration AppConfiguration { get; set; }
+    public static AppConfiguration AppConfiguration { get; private set; }
     public static WebApplicationBuilder CreateAppBuilder(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
