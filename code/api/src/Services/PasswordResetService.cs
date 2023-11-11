@@ -4,18 +4,15 @@ public class PasswordResetService
 {
     private readonly MainAppDatabase _database;
     private readonly MailService _mailService;
-    private readonly AppConfiguration _configuration;
     private readonly ILogger<PasswordResetService> _logger;
     private readonly IStringLocalizer<SharedResources> _localizer;
 
     public PasswordResetService(
         MainAppDatabase database,
-        VaultService vaultService,
         ILogger<PasswordResetService> logger,
         MailService mailService, IStringLocalizer<SharedResources> localizer)
     {
         _database = database;
-        _configuration = vaultService.GetCurrentAppConfiguration();
         _logger = logger;
         _mailService = mailService;
         _localizer = localizer;
@@ -69,7 +66,7 @@ Go to the following link to set a new password.
 
 The link expires at {3}.
 If you did not request a password reset, no action is required.
-""", user.DisplayName(true), _configuration.CANONICAL_FRONTEND_URL, request.Id, zonedExpirationDate.ToString("yyyy-MM-dd hh:mm")]
+""", user.DisplayName(true), Program.AppConfiguration.CANONICAL_FRONTEND_URL, request.Id, zonedExpirationDate.ToString("yyyy-MM-dd hh:mm")]
         };
 
         await Task.Run(() =>

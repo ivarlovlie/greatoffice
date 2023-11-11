@@ -6,11 +6,11 @@ public class MailService
     private static string _fromEmail;
     private readonly HttpClient _httpClient;
 
-    public MailService(VaultService vaultService, ILogger<MailService> logger, HttpClient httpClient) {
-        var configuration = vaultService.GetCurrentAppConfiguration();
-        _fromEmail = configuration.EMAIL_FROM_ADDRESS;
+    public MailService(ILogger<MailService> logger, HttpClient httpClient)
+    {
+        _fromEmail = Program.AppConfiguration.EMAIL_FROM_ADDRESS;
         _logger = logger;
-        httpClient.DefaultRequestHeaders.Add("X-Postmark-Server-Token", configuration.POSTMARK_TOKEN);
+        httpClient.DefaultRequestHeaders.Add("X-Postmark-Server-Token", Program.AppConfiguration.POSTMARK_TOKEN);
         _httpClient = httpClient;
     }
 
@@ -19,35 +19,46 @@ public class MailService
     /// </summary>
     /// <param name="message"></param>
     /// <exception cref="ArgumentException"></exception>
-    public async Task SendMailAsync(PostmarkEmail message) {
-        try {
-            if (message.MessageStream.IsNullOrWhiteSpace()) {
+    public async Task SendMailAsync(PostmarkEmail message)
+    {
+        try
+        {
+            if (message.MessageStream.IsNullOrWhiteSpace())
+            {
                 message.MessageStream = "outbound";
             }
 
-            if (message.From.IsNullOrWhiteSpace() && _fromEmail.HasValue()) {
+            if (message.From.IsNullOrWhiteSpace() && _fromEmail.HasValue())
+            {
                 message.From = _fromEmail;
-            } else {
+            }
+            else
+            {
                 throw new ApplicationException("Not one from-email is available");
             }
 
-            if (message.To.IsNullOrWhiteSpace()) {
+            if (message.To.IsNullOrWhiteSpace())
+            {
                 throw new ArgumentNullException(nameof(message.To), "A recipient should be specified.");
             }
 
-            if (!message.To.IsValidEmailAddress()) {
+            if (!message.To.IsValidEmailAddress())
+            {
                 throw new ArgumentException(nameof(message.To), "To is not a valid email address");
             }
 
-            if (message.HtmlBody.IsNullOrWhiteSpace() && message.TextBody.IsNullOrWhiteSpace()) {
+            if (message.HtmlBody.IsNullOrWhiteSpace() && message.TextBody.IsNullOrWhiteSpace())
+            {
                 throw new ArgumentNullException(nameof(message), "Both HtmlBody and TextBody is empty, nothing to send");
             }
 #if DEBUG
-            _logger.LogInformation("Sending email: {0}", JsonSerializer.Serialize(message, new JsonSerializerOptions() {WriteIndented = true}));
+            _logger.LogInformation("Sending email: {0}", JsonSerializer.Serialize(message, new JsonSerializerOptions() { WriteIndented = true }));
 #endif
             var response = await _httpClient.PostAsJsonAsync("https://api.postmarkapp.com/email", message);
             _logger.LogInformation("Postmark returned with message: {0}", (await response.Content.ReadFromJsonAsync<PostmarkSendResponse>()).Message);
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             _logger.LogError(e, "A silent exception occured while trying to send an email");
         }
     }
@@ -60,7 +71,7 @@ public class MailService
         public Guid MessageID { get; set; }
 
         /// <summary>
-        ///   The message from the API.  
+        ///   The message from the API.
         ///   In the event of an error, this message may contain helpful text.
         /// </summary>
         public string Message { get; set; }

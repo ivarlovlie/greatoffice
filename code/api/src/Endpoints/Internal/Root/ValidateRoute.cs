@@ -6,11 +6,11 @@ public class ValidateRoute : RouteBaseSync.WithRequest<ValidateRoute.QueryParams
     private readonly string CanonicalFrontendUrl;
     private readonly ILogger<ValidateRoute> _logger;
 
-    public ValidateRoute(VaultService vaultService, EmailValidationService emailValidation, ILogger<ValidateRoute> logger) {
+    public ValidateRoute(EmailValidationService emailValidation, ILogger<ValidateRoute> logger)
+    {
         _emailValidation = emailValidation;
         _logger = logger;
-        var c = vaultService.GetCurrentAppConfiguration();
-        CanonicalFrontendUrl = c.CANONICAL_FRONTEND_URL;
+        CanonicalFrontendUrl = Program.AppConfiguration.CANONICAL_FRONTEND_URL;
     }
 
     public class QueryParams
@@ -20,9 +20,11 @@ public class ValidateRoute : RouteBaseSync.WithRequest<ValidateRoute.QueryParams
     }
 
     [HttpGet("~/_/validate")]
-    public override ActionResult Handle([FromQuery] QueryParams request) {
+    public override ActionResult Handle([FromQuery] QueryParams request)
+    {
         var isFulfilled = _emailValidation.FulfillEmailValidationRequest(request.Id, LoggedInUser.Id);
-        if (!isFulfilled) {
+        if (!isFulfilled)
+        {
             _logger.LogError("Email validation fulfillment failed for request {requestId} and user {userId}", request.Id, LoggedInUser.Id);
             return StatusCode(400, $"""
 <html>

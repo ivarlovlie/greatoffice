@@ -8,20 +8,17 @@ namespace IOL.GreatOffice.Api.Utilities;
 public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
 {
 	private readonly MainAppDatabase _context;
-	private readonly AppConfiguration _configuration;
 	private readonly ILogger<BasicAuthenticationHandler> _logger;
 
 	public BasicAuthenticationHandler(
 			IOptionsMonitor<AuthenticationSchemeOptions> options,
 			ILoggerFactory logger,
 			UrlEncoder encoder,
-			MainAppDatabase context,
-			VaultService vaultService
+			MainAppDatabase context
 	) :
 			base(options, logger, encoder)
 	{
 		_context = context;
-		_configuration = vaultService.GetCurrentAppConfiguration();
 		_logger = logger.CreateLogger<BasicAuthenticationHandler>();
 	}
 
@@ -36,7 +33,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
 
 		try
 		{
-			var tokenEntropy = _configuration.APP_AES_KEY;
+			var tokenEntropy = Program.AppConfiguration.APP_AES_KEY;
 			if (tokenEntropy.IsNullOrWhiteSpace())
 			{
 				_logger.LogWarning("No token entropy is available in env:TOKEN_ENTROPY, Basic auth is disabled");

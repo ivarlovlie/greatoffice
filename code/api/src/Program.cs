@@ -44,6 +44,7 @@ namespace IOL.GreatOffice.Api;
 public static class Program
 {
     private static readonly string[] supportedCultures = ["en", "nb"];
+    public static AppConfiguration AppConfiguration { get; set; }
     public static WebApplicationBuilder CreateAppBuilder(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
@@ -55,11 +56,10 @@ public static class Program
         builder.Services.AddScoped<UserService>();
         builder.Services.AddScoped<TenantService>();
         builder.Services.AddScoped<EmailValidationService>();
-        builder.Services.AddSingleton<VaultService>();
-        builder.Services.AddHttpClient<VaultService>();
         builder.Services.AddHttpClient<MailService>();
-        var vaultService = builder.Services.BuildServiceProvider().GetRequiredService<VaultService>();
-        var configuration = vaultService.GetCurrentAppConfiguration();
+
+        AppConfiguration = new AppConfiguration(builder.Configuration);
+
         var logger = new LoggerConfiguration()
             .MinimumLevel.Information()
             .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
@@ -68,13 +68,13 @@ public static class Program
             .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
             .WriteTo.Console();
 
-        if (!builder.Environment.IsDevelopment() && configuration.SEQ_API_KEY.HasValue() && configuration.SEQ_API_URL.HasValue())
+        if (!builder.Environment.IsDevelopment() && AppConfiguration.SEQ_API_KEY.HasValue() && AppConfiguration.SEQ_API_URL.HasValue())
         {
-            logger.WriteTo.Seq(configuration.SEQ_API_URL, apiKey: configuration.SEQ_API_KEY);
+            logger.WriteTo.Seq(AppConfiguration.SEQ_API_URL, apiKey: AppConfiguration.SEQ_API_KEY);
         }
 
         Log.Logger = logger.CreateLogger();
-        Log.Information("Starting web host, " + JsonSerializer.Serialize(configuration.GetPublicObject(), JsonSettings.WriteIndented));
+        Log.Information("Starting web host, " + JsonSerializer.Serialize(AppConfiguration.GetPublicObject(), JsonSettings.WriteIndented));
 
         builder.Host.UseSerilog(Log.Logger);
 
@@ -107,18 +107,18 @@ public static class Program
 
         builder.Services
             .AddDataProtection()
-            .ProtectKeysWithCertificate(configuration.CERT1())
+            .ProtectKeysWithCertificate(AppConfiguration.CERT1())
             .PersistKeysToDbContext<MainAppDatabase>();
 
         builder.Services.Configure(JsonSettings.SetDefaultAction);
-
         builder.Services.AddQuartz(options =>
         {
             options.UsePersistentStore(o =>
             {
-                o.UsePostgres(builder.Configuration.GetQuartzDatabaseConnectionString(vaultService.GetCurrentAppConfiguration));
+                o.UsePostgres(AppConfiguration.GetQuartzDatabaseConnectionString());
                 o.UseSerializer<QuartzJsonSerializer>();
             });
+
             options.RegisterJobs();
         });
 
@@ -146,7 +146,7 @@ public static class Program
 
         builder.Services.AddDbContext<MainAppDatabase>(options =>
         {
-            options.UseNpgsql(builder.Configuration.GetAppDatabaseConnectionString(vaultService.GetCurrentAppConfiguration),
+            options.UseNpgsql(AppConfiguration.GetAppDatabaseConnectionString(),
                     npgsqlDbContextOptionsBuilder =>
                     {
                         npgsqlDbContextOptionsBuilder.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery);
