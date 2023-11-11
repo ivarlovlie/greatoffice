@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <UserSecretsId>ed5ff3e5-46e2-4d7e-8272-7081f5abfee4</UserSecretsId>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <ImplicitUsings>true</ImplicitUsings>

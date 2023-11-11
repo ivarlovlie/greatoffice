@@ -3,7 +3,7 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <ImplicitUsings>true</ImplicitUsings>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
     </PropertyGroup>
@@ -15,7 +15,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\server\IOL.GreatOffice.Api.csproj" />
-      <ProjectReference Include="..\..\server\src\IOL.GreatOffice.Api.csproj" />
+      <ProjectReference Include="..\..\src\IOL.GreatOffice.Api.csproj" />
     </ItemGroup>
 </Project>
