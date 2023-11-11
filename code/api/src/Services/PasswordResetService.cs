@@ -1,5 +1,3 @@
-using IOL.GreatOffice.Api.Models.Database;
-
 namespace IOL.GreatOffice.Api.Services;
 
 public class PasswordResetService
@@ -14,7 +12,8 @@ public class PasswordResetService
         MainAppDatabase database,
         VaultService vaultService,
         ILogger<PasswordResetService> logger,
-        MailService mailService, IStringLocalizer<SharedResources> localizer) {
+        MailService mailService, IStringLocalizer<SharedResources> localizer)
+    {
         _database = database;
         _configuration = vaultService.GetCurrentAppConfiguration();
         _logger = logger;
@@ -22,11 +21,13 @@ public class PasswordResetService
         _localizer = localizer;
     }
 
-    public async Task<PasswordResetRequest> GetRequestAsync(Guid id, CancellationToken cancellationToken = default) {
+    public async Task<PasswordResetRequest> GetRequestAsync(Guid id, CancellationToken cancellationToken = default)
+    {
         var request = await _database.PasswordResetRequests
             .Include(c => c.User)
             .SingleOrDefaultAsync(c => c.Id == id, cancellationToken);
-        if (request == default) {
+        if (request == default)
+        {
             return default;
         }
 
@@ -34,7 +35,8 @@ public class PasswordResetService
         return request;
     }
 
-    public async Task<FulfillPasswordResetRequestResult> FulfillRequestAsync(Guid id, string newPassword, CancellationToken cancellationToken = default) {
+    public async Task<FulfillPasswordResetRequestResult> FulfillRequestAsync(Guid id, string newPassword, CancellationToken cancellationToken = default)
+    {
         var request = await GetRequestAsync(id, cancellationToken);
         if (request == default) return FulfillPasswordResetRequestResult.REQUEST_NOT_FOUND;
         var user = _database.Users.FirstOrDefault(c => c.Id == request.User.Id);
@@ -47,13 +49,15 @@ public class PasswordResetService
         return FulfillPasswordResetRequestResult.FULFILLED;
     }
 
-    public async Task AddRequestAsync(User user, TimeZoneInfo requestTz, CancellationToken cancellationToken = default) {
+    public async Task AddRequestAsync(User user, TimeZoneInfo requestTz, CancellationToken cancellationToken = default)
+    {
         await DeleteRequestsForUserAsync(user.Id, cancellationToken);
         var request = new PasswordResetRequest(user);
         _database.PasswordResetRequests.Add(request);
         await _database.SaveChangesAsync(cancellationToken);
         var zonedExpirationDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(request.ExpirationDate, requestTz.Id);
-        var message = new MailService.PostmarkEmail() {
+        var message = new MailService.PostmarkEmail()
+        {
             To = request.User.Username,
             Subject = _localizer["Reset password - Greatoffice"],
             TextBody = _localizer["""
@@ -68,16 +72,16 @@ If you did not request a password reset, no action is required.
 """, user.DisplayName(true), _configuration.CANONICAL_FRONTEND_URL, request.Id, zonedExpirationDate.ToString("yyyy-MM-dd hh:mm")]
         };
 
-#pragma warning disable 4014
-        Task.Run(() => {
-#pragma warning restore 4014
-                _mailService.SendMailAsync(message);
-                _logger.LogInformation($"Added password reset request for user: {request.User.Username}, expires in {request.ExpirationDate.Subtract(AppDateTime.UtcNow)}.");
-            },
-            cancellationToken);
+        await Task.Run(() =>
+        {
+            _mailService.SendMailAsync(message).ConfigureAwait(false);
+            _logger.LogInformation($"Added password reset request for user: {request.User.Username}, expires in {request.ExpirationDate.Subtract(AppDateTime.UtcNow)}.");
+        },
+            cancellationToken).ConfigureAwait(false);
     }
 
-    public async Task DeleteRequestsForUserAsync(Guid userId, CancellationToken cancellationToken = default) {
+    public async Task DeleteRequestsForUserAsync(Guid userId, CancellationToken cancellationToken = default)
+    {
         var requestsToRemove = _database.PasswordResetRequests.Where(c => c.UserId == userId).ToList();
         if (!requestsToRemove.Any()) return;
         _database.PasswordResetRequests.RemoveRange(requestsToRemove);
@@ -85,10 +89,13 @@ If you did not request a password reset, no action is required.
         _logger.LogInformation($"Deleted {requestsToRemove.Count} password reset requests for user: {userId}.");
     }
 
-    public async Task DeleteStaleRequestsAsync(CancellationToken cancellationToken = default) {
+    public async Task DeleteStaleRequestsAsync(CancellationToken cancellationToken = default)
+    {
         var deleteCount = 0;
-        foreach (var request in _database.PasswordResetRequests.Where(c => c.IsExpired)) {
-            if (!request.IsExpired) {
+        foreach (var request in _database.PasswordResetRequests.Where(c => c.IsExpired))
+        {
+            if (!request.IsExpired)
+            {
                 continue;
             }
 

@@ -1,28 +1,28 @@
-import {Temporal} from "temporal-polyfill";
-import {redirect} from "@sveltejs/kit";
-import {browser} from "$app/environment";
-import {goto} from "$app/navigation";
-import {SignInPageMessage, signInPageMessageQueryKey} from "$routes/(main)/(public)/sign-in";
-import {AccountService} from "$services/account-service";
+import { Temporal } from "temporal-polyfill";
+import { redirect } from "@sveltejs/kit";
+import { browser } from "$app/environment";
+import { goto } from "$app/navigation";
+import { SignInPageMessage, signInPageMessageQueryKey } from "$routes/(main)/(public)/sign-in";
+import { AccountService } from "$services/account-service";
 
 
 export async function http_post_async(url: string, body?: object | string, timeout = -1, skip_401_check = false, abort_signal?: AbortSignal): Promise<Response> {
     const init = make_request_init("post", body, abort_signal);
-    const response = await internal_fetch_async({url, init, timeout});
+    const response = await internal_fetch_async({ url, init, timeout });
     if (!skip_401_check && await redirect_if_401_async(response)) throw new Error("Server returned 401");
     return response;
 }
 
 export async function http_get_async(url: string, timeout = -1, skip_401_check = false, abort_signal?: AbortSignal): Promise<Response> {
     const init = make_request_init("get", undefined, abort_signal);
-    const response = await internal_fetch_async({url, init, timeout});
+    const response = await internal_fetch_async({ url, init, timeout });
     if (!skip_401_check && await redirect_if_401_async(response)) throw new Error("Server returned 401");
     return response;
 }
 
 export async function http_delete_async(url: string, body?: object | string, timeout = -1, skip_401_check = false, abort_signal?: AbortSignal): Promise<Response> {
     const init = make_request_init("delete", body, abort_signal);
-    const response = await internal_fetch_async({url, init, timeout});
+    const response = await internal_fetch_async({ url, init, timeout });
     if (!skip_401_check && await redirect_if_401_async(response)) throw new Error("Server returned 401");
     return response;
 }
@@ -42,11 +42,10 @@ async function internal_fetch_async(request: InternalFetchRequest): Promise<Resp
             response = await fetch(fetch_request);
         }
     } catch (error: any) {
-        console.error(error);
         if (error.message === "Timeout") {
-            console.error("Request timed out");
+            console.error("Request timed out", error);
         } else if (error.message === "Network request failed") {
-            console.error("No internet connection");
+            console.error("No internet connection", error);
         } else {
             throw error;
         }
