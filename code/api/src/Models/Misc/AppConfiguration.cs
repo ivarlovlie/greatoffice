@@ -1,6 +1,6 @@
 using System.Security.Cryptography.X509Certificates;
 
-namespace IOL.GreatOffice.Api.Data.Models;
+namespace IOL.GreatOffice.Api.Models.Models;
 
 public class AppConfiguration
 {
@@ -96,8 +96,10 @@ public class AppConfiguration
 
     public X509Certificate2 CERT1() => new(Convert.FromBase64String(APP_CERT));
 
-    public object GetPublicVersion() {
-        return new {
+    public object GetPublicObject()
+    {
+        return new
+        {
             DB_HOST,
             DB_PORT,
             DB_USER,

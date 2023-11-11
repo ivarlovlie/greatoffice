@@ -4,14 +4,16 @@ public class ReadConfigurationRoute : RouteBaseSync.WithoutRequest.WithActionRes
 {
     private readonly VaultService _vaultService;
 
-    public ReadConfigurationRoute(VaultService vaultService) {
+    public ReadConfigurationRoute(VaultService vaultService)
+    {
         _vaultService = vaultService;
     }
 
     [AllowAnonymous]
     [HttpGet("~/_/configuration")]
-    public override ActionResult Handle() {
+    public override ActionResult Handle()
+    {
         var config = _vaultService.GetCurrentAppConfiguration();
-        return Content(JsonSerializer.Serialize(config.GetPublicVersion()), "application/json");
+        return Content(JsonSerializer.Serialize(config.GetPublicObject()), "application/json");
     }
 }

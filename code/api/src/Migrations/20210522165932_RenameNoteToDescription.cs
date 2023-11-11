@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IOL.GreatOffice.Api.Migrations
 {
@@ -27,8 +26,8 @@ namespace IOL.GreatOffice.Api.Migrations
 
             migrationBuilder.InsertData(
                 table: "users",
-                columns: new[] { "id", "created", "password", "username" },
-                values: new object[] { new Guid("784938f0-cc0e-46ec-afa6-fc60b47b28db"), new DateTime(2021, 5, 17, 20, 21, 14, 827, DateTimeKind.Utc).AddTicks(4868), "AAAAAAEAACcQAAAAEJdtrX3pEeIbcgY+BDAr56gvfbc420ag1TllA0cK6Q6Gw3+gGDIQtYIZnisW3dmqaQ==", "admin@ivarlovlie.no" });
+                columns: ["id", "created", "password", "username"],
+                values: [new Guid("784938f0-cc0e-46ec-afa6-fc60b47b28db"), new DateTime(2021, 5, 17, 20, 21, 14, 827, DateTimeKind.Utc).AddTicks(4868), "AAAAAAEAACcQAAAAEJdtrX3pEeIbcgY+BDAr56gvfbc420ag1TllA0cK6Q6Gw3+gGDIQtYIZnisW3dmqaQ==", "admin@ivarlovlie.no"]);
         }
     }
 }

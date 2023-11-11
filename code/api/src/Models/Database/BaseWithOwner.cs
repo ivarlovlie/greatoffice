@@ -1,4 +1,4 @@
-namespace IOL.GreatOffice.Api.Data.Database;
+namespace IOL.GreatOffice.Api.Models.Database;
 
 /// <summary>
 /// Base class for all entities with ownership.
@@ -7,11 +7,13 @@ public abstract class BaseWithOwner : Base
 {
 	protected BaseWithOwner() { }
 
-	protected BaseWithOwner(Guid createdBy) {
+	protected BaseWithOwner(Guid createdBy)
+	{
 		CreatedBy = createdBy;
 	}
 
-	protected BaseWithOwner(LoggedInUserModel loggedInUser) {
+	protected BaseWithOwner(LoggedInUserModel loggedInUser)
+	{
 		CreatedBy = loggedInUser.Id;
 	}
 
@@ -23,17 +25,20 @@ public abstract class BaseWithOwner : Base
 	public User OwningUser { get; set; }
 	public Tenant OwningTenant { get; set; }
 
-	public void SetDeleted(Guid userId) {
+	public void SetDeleted(Guid userId)
+	{
 		DeletedBy = userId;
 		base.SetDeleted();
 	}
 
-	public void SetModified(Guid userId) {
+	public void SetModified(Guid userId)
+	{
 		ModifiedBy = userId;
 		base.SetModified();
 	}
 
-	public void SetOwnerIds(Guid userId = default, Guid tenantId = default) {
+	public void SetOwnerIds(Guid userId = default, Guid tenantId = default)
+	{
 		if (tenantId != default) TenantId = tenantId;
 		if (userId != default) UserId = userId;
 	}

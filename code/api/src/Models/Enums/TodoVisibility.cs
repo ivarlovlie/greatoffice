@@ -1,5 +1,5 @@
 
-namespace IOL.GreatOffice.Api.Data.Enums;
+namespace IOL.GreatOffice.Api.Models.Enums;
 
 public enum TodoVisibility
 {

@@ -1,4 +1,4 @@
-namespace IOL.GreatOffice.Api.Data.Models;
+namespace IOL.GreatOffice.Api.Models.Models;
 
 public class LoggedInUserModel
 {

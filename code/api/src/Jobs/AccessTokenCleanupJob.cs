@@ -1,5 +1,3 @@
-using IOL.GreatOffice.Api.Models.Database;
-
 namespace IOL.GreatOffice.Api.Jobs;
 
 public class AccessTokenCleanupJob : IJob

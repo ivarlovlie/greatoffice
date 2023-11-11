@@ -1,4 +1,4 @@
-namespace IOL.GreatOffice.Api.Data.Database;
+namespace IOL.GreatOffice.Api.Models.Database;
 
 public class Todo : BaseWithOwner
 {

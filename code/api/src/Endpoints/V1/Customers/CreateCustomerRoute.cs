@@ -1,5 +1,3 @@
-using IOL.GreatOffice.Api.Models.Database;
-
 namespace IOL.GreatOffice.Api.Endpoints.V1.Customers;
 
 public class CreateCustomerRoute : RouteBaseAsync.WithRequest<CreateCustomerPayload>.WithActionResult

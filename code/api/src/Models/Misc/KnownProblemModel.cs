@@ -1,8 +1,9 @@
-namespace IOL.GreatOffice.Api.Data.Models;
+namespace IOL.GreatOffice.Api.Models.Models;
 
 public class KnownProblemModel
 {
-    public KnownProblemModel(string title = default, string subtitle = default, Dictionary<string, string[]> errors = default) {
+    public KnownProblemModel(string title = default, string subtitle = default, Dictionary<string, string[]> errors = default)
+    {
         Title = title;
         Subtitle = subtitle;
         Errors = errors ?? new();
@@ -13,12 +14,16 @@ public class KnownProblemModel
     public Dictionary<string, string[]> Errors { get; set; }
     public string TraceId { get; set; }
 
-    public void AddError(string field, string errorText) {
-        if (!Errors.ContainsKey(field)) {
-            Errors.Add(field, new[] {errorText});
-        } else {
+    public void AddError(string field, string errorText)
+    {
+        if (!Errors.ContainsKey(field))
+        {
+            Errors.Add(field, [errorText]);
+        }
+        else
+        {
             var currentErrors = Errors[field];
-            var newErrors = currentErrors.Concat(new[] {errorText});
+            var newErrors = currentErrors.Concat(new[] { errorText });
             Errors.Remove(field);
             Errors.Add(field, newErrors.ToArray());
         }

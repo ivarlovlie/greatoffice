@@ -1,5 +1,3 @@
-using IOL.GreatOffice.Api.Models.Database;
-
 namespace IOL.GreatOffice.Api.Endpoints.V1.Projects;
 
 public class CreateProjectRoute : RouteBaseAsync.WithRequest<CreateProjectPayload>.WithActionResult

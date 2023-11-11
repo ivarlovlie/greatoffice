@@ -1,5 +1,3 @@
-using IOL.GreatOffice.Api.Models.Database;
-
 namespace IOL.GreatOffice.Api.Endpoints.V1.ApiTokens;
 
 public class GetTokensRoute : RouteBaseSync.WithoutRequest.WithResult<ActionResult<List<GetTokensRoute.ResponseModel>>>

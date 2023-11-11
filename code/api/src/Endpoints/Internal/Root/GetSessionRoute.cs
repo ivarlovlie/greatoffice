@@ -1,5 +1,3 @@
-using IOL.GreatOffice.Api.Models.Database;
-
 namespace IOL.GreatOffice.Api.Endpoints.Internal.Root;
 
 public class GetSessionRoute : RouteBaseSync.WithoutRequest.WithActionResult<GetSessionRoute.SessionResponse>

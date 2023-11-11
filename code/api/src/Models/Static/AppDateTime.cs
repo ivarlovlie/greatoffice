@@ -1,4 +1,4 @@
-namespace IOL.GreatOffice.Api.Data.Static;
+namespace IOL.GreatOffice.Api.Models.Static;
 
 public static class AppDateTime
 {
@@ -6,11 +6,13 @@ public static class AppDateTime
 
 	public static DateTime UtcNow => dateTime ?? DateTime.UtcNow;
 
-	public static void Set(DateTime setDateTime) {
+	public static void Set(DateTime setDateTime)
+	{
 		dateTime = setDateTime;
 	}
 
-	public static void Reset() {
+	public static void Reset()
+	{
 		dateTime = null;
 	}
 }

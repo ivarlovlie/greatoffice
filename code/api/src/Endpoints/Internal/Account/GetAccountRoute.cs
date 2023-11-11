@@ -1,5 +1,3 @@
-using IOL.GreatOffice.Api.Models.Database;
-
 namespace IOL.GreatOffice.Api.Endpoints.Internal.Account;
 
 public class GetAccountRoute : RouteBaseAsync.WithoutRequest.WithActionResult<LoggedInUserModel>

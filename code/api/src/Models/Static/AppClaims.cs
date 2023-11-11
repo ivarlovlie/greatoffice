@@ -1,4 +1,4 @@
-namespace IOL.GreatOffice.Api.Data.Static;
+namespace IOL.GreatOffice.Api.Models.Static;
 
 public static class AppClaims
 {

@@ -1,4 +1,4 @@
-namespace IOL.GreatOffice.Api.Data.Static;
+namespace IOL.GreatOffice.Api.Models.Static;
 
 public static class AppEnvironmentVariables
 {
@@ -18,7 +18,7 @@ public static class AppEnvironmentVariables
     public const string VAULT_CACHE_TTL = "VAULT_CACHE_TTL";
 
     /// <summary>
-    /// The vault key name for the main configuration json object, described by <see cref="AppConfiguration"/> 
+    /// The vault key name for the main configuration json object, described by <see cref="AppConfiguration"/>
     /// </summary>
     public const string MAIN_CONFIG_SHEET = "MAIN_CONFIG_SHEET";
 

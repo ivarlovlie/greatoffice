@@ -1,10 +1,11 @@
-namespace IOL.GreatOffice.Api.Data.Database;
+namespace IOL.GreatOffice.Api.Models.Database;
 
 public class PasswordResetRequest
 {
 	public PasswordResetRequest() { }
 
-	public PasswordResetRequest(User user) {
+	public PasswordResetRequest(User user)
+	{
 		CreatedAt = AppDateTime.UtcNow;
 		Id = Guid.NewGuid();
 		User = user;

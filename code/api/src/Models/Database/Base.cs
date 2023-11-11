@@ -1,8 +1,9 @@
-namespace IOL.GreatOffice.Api.Data.Database;
+namespace IOL.GreatOffice.Api.Models.Database;
 
 public abstract class Base
 {
-    protected Base() {
+    protected Base()
+    {
         Id = Guid.NewGuid();
         CreatedAt = AppDateTime.UtcNow;
     }
@@ -15,7 +16,8 @@ public abstract class Base
 
     public void SetModified() => ModifiedAt = AppDateTime.UtcNow;
 
-    public void SetDeleted() {
+    public void SetDeleted()
+    {
         Deleted = true;
         DeletedAt = AppDateTime.UtcNow;
     }

@@ -1,10 +1,11 @@
-namespace IOL.GreatOffice.Api.Data.Database;
+namespace IOL.GreatOffice.Api.Models.Database;
 
 public class User : Base
 {
     public User() { }
 
-    public User(string username) {
+    public User(string username)
+    {
         Username = username;
     }
 
@@ -17,25 +18,30 @@ public class User : Base
     public ICollection<Tenant> Tenants { get; set; }
     public Guid? DeletedBy { get; set; }
 
-    public string DisplayName(bool isForGreeting = false) {
+    public string DisplayName(bool isForGreeting = false)
+    {
         if (!isForGreeting && FirstName.HasValue() && LastName.HasValue()) return FirstName + " " + LastName;
         return FirstName.HasValue() ? FirstName : Username ?? Email;
     }
 
-    public void HashAndSetPassword(string password) {
+    public void HashAndSetPassword(string password)
+    {
         Password = PasswordHelper.HashPassword(password);
     }
 
-    public bool VerifyPassword(string password) {
+    public bool VerifyPassword(string password)
+    {
         return PasswordHelper.Verify(password, Password);
     }
 
-    public void SetDeleted(Guid userId) {
+    public void SetDeleted(Guid userId)
+    {
         base.SetDeleted();
         DeletedBy = userId;
     }
 
-    public IEnumerable<Claim> DefaultClaims() {
+    public IEnumerable<Claim> DefaultClaims()
+    {
         return new Claim[] {
             new(AppClaims.USER_ID, Id.ToString()),
             new(AppClaims.NAME, Username),

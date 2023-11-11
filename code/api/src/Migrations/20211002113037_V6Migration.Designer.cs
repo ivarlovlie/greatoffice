@@ -4,7 +4,7 @@
 #nullable disable
 
 using System;
-using IOL.GreatOffice.Api.Data;
+using IOL.GreatOffice.Api.Models;
 using IOL.GreatOffice.Api.Models.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
