@@ -8,10 +8,8 @@ CURRENT_VERSION=$(cat .version)
 CURRENT_VERSION_INT=${CURRENT_VERSION//[!0-9]/}
 if [ ${1-prod} == "dev" ]; then
   NEW_VERSION="v$((CURRENT_DEV_VERSION_INT + 1))-dev"
-  OLD_VERSION=$CURRENT_DEV_VERSION
 else
   NEW_VERSION="v$((CURRENT_VERSION_INT + 1))"
-  OLD_VERSION=$CURRENT_VERSION
 fi
 IMAGE_NAME="greatoffice/server"
 HUB_NAME="dr.ivar.systems/greatoffice/server"

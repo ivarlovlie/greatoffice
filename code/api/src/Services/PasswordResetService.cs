@@ -22,7 +22,7 @@ public class PasswordResetService
     {
         var request = await _database.PasswordResetRequests
             .Include(c => c.User)
-            .SingleOrDefaultAsync(c => c.Id == id, cancellationToken);
+            .FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
         if (request == default)
         {
             return default;

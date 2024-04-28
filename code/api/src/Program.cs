@@ -10,7 +10,7 @@ global using System.Text.Json;
 global using System.Text.Json.Serialization;
 global using IOL.GreatOffice.Api.Models.Database;
 global using IOL.GreatOffice.Api.Models.Enums;
-global using IOL.GreatOffice.Api.Models.Models;
+global using IOL.GreatOffice.Api.Models.Misc;
 global using IOL.GreatOffice.Api.Models.Static;
 global using IOL.GreatOffice.Api.Services;
 global using IOL.GreatOffice.Api.Resources;

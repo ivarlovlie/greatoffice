@@ -12,7 +12,7 @@ public class GetAccountRoute : RouteBaseAsync.WithoutRequest.WithActionResult<Lo
     public override async Task<ActionResult<LoggedInUserModel>> HandleAsync(CancellationToken cancellationToken = default) {
         var user = _database.Users
             .Select(x => new {x.Username, x.Id})
-            .SingleOrDefault(c => c.Id == LoggedInUser.Id);
+            .FirstOrDefault(c => c.Id == LoggedInUser.Id);
         if (user != default) {
             return Ok(new LoggedInUserModel {
                 Id = LoggedInUser.Id,

@@ -1,4 +1,4 @@
-namespace IOL.GreatOffice.Api.Models.Models;
+namespace IOL.GreatOffice.Api.Models.Misc;
 
 public sealed record AppPath
 {

@@ -19,7 +19,7 @@ public class UpdateAccountRoute : RouteBaseAsync.WithRequest<UpdateAccountRoute.
 
     [HttpPost("~/_/account/update")]
     public override async Task<ActionResult> HandleAsync(Payload request, CancellationToken cancellationToken = default) {
-        var user = _database.Users.SingleOrDefault(c => c.Id == LoggedInUser.Id);
+        var user = _database.Users.FirstOrDefault(c => c.Id == LoggedInUser.Id);
         if (user == default) {
             await HttpContext.SignOutAsync();
             return Unauthorized();

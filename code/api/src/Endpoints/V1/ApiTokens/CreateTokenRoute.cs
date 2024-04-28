@@ -31,7 +31,7 @@ public class CreateTokenRoute : RouteBaseSync.WithRequest<CreateTokenRoute.Paylo
     [HttpPost("~/v{version:apiVersion}/api-tokens/create")]
     public override ActionResult Handle(Payload request)
     {
-        var user = _database.Users.SingleOrDefault(c => c.Id == LoggedInUser.Id);
+        var user = _database.Users.FirstOrDefault(c => c.Id == LoggedInUser.Id);
         if (user == default)
         {
             return NotFound(new KnownProblemModel("User does not exist"));

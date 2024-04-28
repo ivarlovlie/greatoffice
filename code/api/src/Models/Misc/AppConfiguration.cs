@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace IOL.GreatOffice.Api.Models.Models;
+namespace IOL.GreatOffice.Api.Models.Misc;
 
 public class AppConfiguration
 {

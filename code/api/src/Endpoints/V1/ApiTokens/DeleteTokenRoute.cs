@@ -18,7 +18,7 @@ public class DeleteTokenRoute : RouteBaseSync.WithRequest<Guid>.WithActionResult
     [ApiVersion(ApiSpecV1.VERSION_STRING)]
     [HttpDelete("~/v{version:apiVersion}/api-tokens/delete")]
     public override ActionResult Handle(Guid id) {
-        var token = _database.AccessTokens.SingleOrDefault(c => c.Id == id);
+        var token = _database.AccessTokens.FirstOrDefault(c => c.Id == id);
         if (token == default) {
             _logger.LogWarning("A deletion request of an already deleted (maybe) api token was received.");
             return NotFound();
