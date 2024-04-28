@@ -10,62 +10,62 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Duende.IdentityServer" Version="6.3.6" />
-        <PackageReference Include="Duende.IdentityServer.EntityFramework.Storage" Version="6.3.6" />
-        <PackageReference Include="EFCore.NamingConventions" Version="7.0.2" />
-        <PackageReference Include="IOL.Helpers" Version="3.1.0" />
-        <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="7.0.13" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
+        <PackageReference Include="Duende.IdentityServer" Version="7.0.4" />
+        <PackageReference Include="Duende.IdentityServer.EntityFramework.Storage" Version="7.0.4" />
+        <PackageReference Include="EFCore.NamingConventions" Version="8.0.3" />
+        <PackageReference Include="IOL.Helpers" Version="3.1.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="8.0.4" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0"/>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="MR.AspNetCore.Pagination" Version="2.2.0" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
-        <PackageReference Include="Quartz.Extensions.Hosting" Version="3.7.0" />
-        <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
-        <PackageReference Include="Serilog.Sinks.Seq" Version="5.2.3" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+        <PackageReference Include="MR.AspNetCore.Pagination" Version="3.0.0" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
+        <PackageReference Include="Quartz.Extensions.Hosting" Version="3.8.1" />
+        <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
+        <PackageReference Include="Serilog.Sinks.Seq" Version="7.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0"/>
     </ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)' == 'Release'">
-        <Content Remove="AppData" />
+        <Content Remove="AppData"/>
     </ItemGroup>
 
     <ItemGroup>
         <Content Include="..\build_and_push.sh">
-          <Link>build_and_push.sh</Link>
+            <Link>build_and_push.sh</Link>
         </Content>
         <Content Include="..\Dockerfile">
-          <Link>Dockerfile</Link>
+            <Link>Dockerfile</Link>
         </Content>
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Update="Resources\SharedResources.en.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>SharedResources.en.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Resources\SharedResources.nb.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>SharedResources.nb.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
+        <EmbeddedResource Update="Resources\SharedResources.en.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>SharedResources.en.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resources\SharedResources.nb.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>SharedResources.nb.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Resources\SharedResources.en.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>SharedResource.en.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Resources\SharedResources.nb.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>SharedResources.nb.resx</DependentUpon>
-      </Compile>
+        <Compile Update="Resources\SharedResources.en.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>SharedResource.en.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resources\SharedResources.nb.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>SharedResources.nb.resx</DependentUpon>
+        </Compile>
     </ItemGroup>
 
 </Project>
