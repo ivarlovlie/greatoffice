@@ -1,4 +1,4 @@
-name: pr
+name: Test frontend
 on:
   workflow_dispatch:
 jobs:
