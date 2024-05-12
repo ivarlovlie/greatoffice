@@ -1,7 +1,7 @@
 FROM registry.hub.docker.com/library/node:lts-buster-slim AS builder
 WORKDIR .
 COPY package.json .
-RUN npm i
+RUN npm i --omit=dev
 COPY . .
 RUN npm run build
 FROM registry.hub.docker.com/library/node:lts-buster-slim

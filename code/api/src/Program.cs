@@ -249,6 +249,7 @@ public static class Program
                 options.DocumentTitle = AppConstants.API_NAME;
             })
             .UseEndpoints(endpoints => { endpoints.MapControllers(); });
+        
         return app;
     }
 
