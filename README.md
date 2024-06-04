@@ -15,7 +15,7 @@ The platform aims to equip it's users with tools to do
 * task management
 
 Everything is WIP, but the platform is regularly updated
-at [https://stage.greatoffice.app](https://stage.greatoffice.app)
+at [https://stage.greatoffice.no](https://stage.greatoffice.no)
 
 ## code/api
 
@@ -23,7 +23,7 @@ Contains an ASP.NET Core Web API, each route is specified in the Endpoints direc
 
 It handles all data operations (except administrative operations) for the platform.
 
-To run it you need .NET 7 and a PostgreSQL instance.
+To run it you need .NET 8 and a PostgreSQL instance.
 
 ### Database schemas
 
